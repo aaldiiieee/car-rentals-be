@@ -1,0 +1,44 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model mcr_car_products {
+  mcp_id               Int    @id @default(autoincrement())
+  mcp_uuid             String @unique
+  mcp_plate            String
+  mcp_manufacture      String
+  mcp_model            String
+  mcp_image_url        String
+  mcp_image_public_id  String
+  mcp_rent_type        String
+  mcp_rent_per_day     Int
+  mcp_capacity         Int
+  mcp_description      String
+  mcp_transmission     String
+  mcp_available        String
+  mcp_year             Int
+  mcp_createdAt        DateTime @default(now())
+  mcp_updatedAt        DateTime @updatedAt        
+}
+
+model mcr_users {
+  mu_id                 Int      @id @default(autoincrement())
+  mu_uuid               String   @unique @default(uuid())
+  mu_phone_number       String
+  mu_email              String
+  mu_password           String
+  mu_address            String
+  mu_province           String
+  mu_city               String
+  mu_district           String
+  mu_full_name          String
+  mu_image_url          String?
+  mu_image_public_id    String?
+  mu_createdAt          DateTime @default(now())
+  mu_updatedAt          DateTime @updatedAt
+}
