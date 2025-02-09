@@ -42,3 +42,18 @@ model mcr_users {
   mu_createdAt          DateTime @default(now())
   mu_updatedAt          DateTime @updatedAt
 }
+
+model mcr_our_services {
+  mos_id                Int     @id @default(autoincrement())
+  mos_title             String
+  mos_description       String
+  mos_benefits          String
+  mos_image_url         String
+}
+
+model mcr_why_us {
+  mwu_id                Int     @id @default(autoincrement())
+  mwu_title             String
+  mwu_description       String
+  mwu_icon_url          String
+}
