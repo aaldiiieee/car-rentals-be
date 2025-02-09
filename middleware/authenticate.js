@@ -1,15 +1,26 @@
-export const authenticate = (req, res, next) => {
-  const token = req.headers.authorization?.split(" ")[1];
+import jwt from "jsonwebtoken";
+
+export const authenticateToken = (req, res, next) => {
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
 
   if (!token) {
-    return res.status(401).json({ message: "Token tidak ditemukan." });
+    return res.status(401).json({
+      message: "Token tidak ditemukan.",
+      success: false,
+      status: 401,
+    });
   }
 
   try {
-    const decoded = jwt.verify(token, JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
     next();
   } catch (error) {
-    res.status(401).json({ message: "Token tidak valid." });
+    res.status(403).json({
+      message: "Token tidak valid.",
+      success: false,
+      status: 403,
+    });
   }
 };

@@ -41,6 +41,8 @@ model mcr_users {
   mu_image_public_id    String?
   mu_createdAt          DateTime @default(now())
   mu_updatedAt          DateTime @updatedAt
+
+  mcr_testimonials      mcr_testimonials[] @relation("UserTestimonials")
 }
 
 model mcr_our_services {
@@ -56,4 +58,15 @@ model mcr_why_us {
   mwu_title             String
   mwu_description       String
   mwu_icon_url          String
+}
+
+model mcr_testimonials {
+  mt_id                 Int     @id @default(autoincrement())
+  mt_user_uuid          String
+  mt_rating             Int     @default(0)
+  mt_comment            String
+  mt_createdAt          DateTime @default(now())
+  mt_updatedAt          DateTime @updatedAt
+
+  mcr_users             mcr_users @relation(fields: [mt_user_uuid], references: [mu_uuid], name: "UserTestimonials")
 }
