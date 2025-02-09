@@ -15,10 +15,10 @@ class CarsModel {
     });
   }
 
-  static async getCarById(id) {
+  static async getCarByUUID(uuid) {
     return await prisma.mcr_car_products.findUnique({
       where: {
-        mcp_id: parseInt(id)
+        mcp_uuid: uuid
       }
     });
   }
