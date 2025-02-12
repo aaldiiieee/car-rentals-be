@@ -190,9 +190,9 @@ export const createCar = async (req, res) => {
 
 export const deleteCar = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { uuid } = req.params;
 
-    const car = await CarsModel.getCarById(id);
+    const car = await CarsModel.getCarByUUID(uuid);
     if (!car) {
       return res.status(404).json({
         message: "Mobil tidak ditemukan",
@@ -205,7 +205,7 @@ export const deleteCar = async (req, res) => {
       await deleteImage(car.mcp_image_public_id);
     }
 
-    await CarsModel.deleteCar(id);
+    await CarsModel.deleteCar(uuid);
 
     res.status(200).json({
       message: "Mobil berhasil dihapus",

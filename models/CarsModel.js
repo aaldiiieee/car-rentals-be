@@ -34,10 +34,10 @@ class CarsModel {
     });
   }
 
-  static async deleteCar(id) {
+  static async deleteCar(uuid) {
     return await prisma.mcr_car_products.delete({
       where: {
-        mcp_id: parseInt(id)
+        mcp_uuid: uuid
       }
     });
   }
