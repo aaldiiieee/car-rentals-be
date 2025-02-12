@@ -53,6 +53,7 @@ export const login = async (req, res) => {
       message: "Login successful",
       success: true,
       status: 200,
+      data: user,
       token,
     });
   } catch (error) {
