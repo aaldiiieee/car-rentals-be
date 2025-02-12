@@ -4,8 +4,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js",
-    "build": "npx prisma generate && npx prisma migrate deploy"
+    "prisma:generate:dev": "dotenv -e .env.development npx prisma generate",
+    "prisma:migrate:dev": "dotenv -e .env.development npx prisma migrate dev",
+    "prisma:deploy:dev": "dotenv -e .env.development npx prisma deploy",
+    "prisma:generate:prod": "dotenv -e .env.production npx prisma generate",
+    "prisma:migrate:prod": "dotenv -e .env.production npx prisma migrate deploy",
+    "prisma:deploy:prod": "dotenv -e .env.production npx prisma deploy",
+    "prisma:prepare": "npm run prisma:generate:prod && npm run prisma:migrate:prod && npm run prisma:deploy:prod",
+    "build:prod": "dotenv -e .env.production npm run prisma:prepare",
+    "start:dev": "dotenv -e .env.development nodemon index.js",
+    "start:prod": "dotenv -e .env.production node index.js"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +29,7 @@
     "cloudinary": "^2.5.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
+    "dotenv-cli": "^8.0.0",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",
