@@ -11,7 +11,8 @@
     "prisma:migrate:prod": "npx prisma migrate deploy",
     "build": "npx prisma generate && npx prisma migrate deploy",
     "start:dev": "dotenv -e .env.development nodemon index.js",
-    "start:prod": "dotenv -e .env.production node index.js"
+    "start:prod": "dotenv -e .env.production node index.js",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
