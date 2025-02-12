@@ -9,8 +9,7 @@
     "prisma:deploy:dev": "dotenv -e .env.development npx prisma deploy",
     "prisma:generate:prod": "npx prisma generate",
     "prisma:migrate:prod": "npx prisma migrate deploy",
-    "prisma:deploy:prod": "npx prisma deploy",
-    "prisma:prepare": "npm run prisma:generate:prod && npm run prisma:migrate:prod && npm run prisma:deploy:prod",
+    "prisma:prepare": "npm run prisma:generate:prod && npm run prisma:migrate:prod",
     "build:prod": "npm run prisma:prepare",
     "start:dev": "dotenv -e .env.development nodemon index.js",
     "start:prod": "dotenv -e .env.production node index.js"
