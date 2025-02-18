@@ -36,12 +36,16 @@ const prisma = new PrismaClient();
 
 export const getAllCars = async (req, res) => {
   try {
-    const { driverType, totalPassengers, startDate, endDate } = req.query;
+    const { driverType, totalPassengers, transmission, startDate, endDate } = req.query;
 
     const filter = {};
 
     if (driverType) {
       filter.mcp_rent_type = driverType;
+    }
+
+    if (transmission) {
+      filter.mcp_transmission = transmission;
     }
 
     // if (startDate || endDate) {
