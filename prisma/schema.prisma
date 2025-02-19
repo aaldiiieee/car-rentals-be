@@ -1,7 +1,7 @@
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  // shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 generator client {
@@ -79,8 +79,8 @@ model mcr_user_bo {
   mub_email             String
   mub_password          String
   mub_full_name         String
-  mub_image_url         String
-  mub_image_public_id   String
+  mub_image_url         String?
+  mub_image_public_id   String?
   mub_role              String
   mub_createdAt         DateTime @default(now())
   mub_updatedAt         DateTime @updatedAt
