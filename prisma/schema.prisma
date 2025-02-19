@@ -71,3 +71,17 @@ model mcr_testimonials {
 
   mcr_users             mcr_users @relation(fields: [mt_user_uuid], references: [mu_uuid], name: "UserTestimonials")
 }
+
+model mcr_user_bo {
+  mub_id                Int     @id @default(autoincrement())
+  mub_uuid              String  @unique @default(uuid())
+  mub_phone_number      String
+  mub_email             String
+  mub_password          String
+  mub_full_name         String
+  mub_image_url         String
+  mub_image_public_id   String
+  mub_role              String
+  mub_createdAt         DateTime @default(now())
+  mub_updatedAt         DateTime @updatedAt
+}

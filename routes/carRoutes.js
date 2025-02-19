@@ -1,8 +1,11 @@
 import express from "express";
 import upload from "../middleware/UploadDisk.js";
 import { createCar, deleteCar, getAllCars, getCarByUUID } from "../controllers/CarController.js";
+import { apiKey } from "../middleware/apiKey.js";
 
 const router = express.Router();
+
+router.use(apiKey);
 
 router.get("/get-all-cars", getAllCars)
 router.get("/get-car/:uuid", getCarByUUID);
