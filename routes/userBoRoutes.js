@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.use(apiKey);
 
-router.post("/get-all-users", getAllUsers);
+router.get("/get-all-users", getAllUsers);
 router.post("/register", register);
 router.post("/login", login);
 
