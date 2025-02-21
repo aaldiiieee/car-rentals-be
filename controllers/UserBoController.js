@@ -4,6 +4,33 @@ import jwt from "jsonwebtoken";
 
 const prisma = new PrismaClient();
 
+export const getAllUsers = async (req, res) => {
+  try {
+    const usersData = await prisma.mcr_user_bo.findMany();
+
+    if (!usersData) {
+      res.status(400).json({
+        message: "Tidak ada data",
+        success: false,
+        status: 400,
+      });
+    }
+
+    res.status(200).json({
+      message: "Data berhasil didapatkan",
+      success: true,
+      status: 200,
+      data: usersData,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+      success: false,
+      status: 500,
+    });
+  }
+};
+
 export const register = async (req, res) => {
   const { mub_phone_number, mub_email, mub_password, mub_full_name, mub_role } =
     req.body;
