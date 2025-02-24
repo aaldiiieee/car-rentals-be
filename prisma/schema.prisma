@@ -62,12 +62,13 @@ model mcr_why_us {
 }
 
 model mcr_testimonials {
-  mt_id                 Int     @id @default(autoincrement())
+  mt_id                 Int       @id @default(autoincrement())
   mt_user_uuid          String
-  mt_rating             Int     @default(0)
+  mt_rating             Int       @default(0)
   mt_comment            String
-  mt_createdAt          DateTime @default(now())
-  mt_updatedAt          DateTime @updatedAt
+  mt_show_comment       Boolean   @default(false)
+  mt_createdAt          DateTime  @default(now())
+  mt_updatedAt          DateTime  @updatedAt
 
   mcr_users             mcr_users @relation(fields: [mt_user_uuid], references: [mu_uuid], name: "UserTestimonials")
 }
