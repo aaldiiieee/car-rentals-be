@@ -1,10 +1,11 @@
-import { PrismaClient } from "@prisma/client";
+// import { PrismaClient } from "@prisma/client";
+import prisma from "../lib/prismaClient.js";
 import CarsModel from "../models/CarsModel.js";
 import { uploadImage, deleteImage } from "../utils/uploads.js";
 import { generateUUIDv4 } from "../utils/generators.js";
 import fs from "fs";
 
-const prisma = new PrismaClient();
+// const prisma = new PrismaClient();
 
 // export const getAllCars = async (req, res) => {
 //   try {
